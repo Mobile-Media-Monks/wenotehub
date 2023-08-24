@@ -1,36 +1,51 @@
 package com.example.wenotehub.presentation.home
 
+import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.wenotehub.domain.home.HomeRepositoryImpl
+import com.example.wenotehub.data.repository.home.HomeRepositoryImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import javax.inject.Inject
-import androidx.lifecycle.liveData
+import androidx.lifecycle.viewModelScope
 import com.example.wenotehub.core.Resource
 import com.example.wenotehub.data.model.Note
-import com.example.wenotehub.data.model.toNoteEntity
+import kotlinx.coroutines.launch
 
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val repo: HomeRepositoryImpl
+    private val repo: HomeRepositoryImpl,
 ) : ViewModel() {
 
-    fun getAllNotes() = liveData(Dispatchers.IO) {
-        emit(Resource.Loading())
-        try {
-            emit(Resource.Success(repo.getAllNotes()))
-        } catch (e: Exception) {
-            emit(Resource.Failure(e))
+    private val _notes = MutableLiveData<List<Note>>(listOf())
+    val notes: LiveData<List<Note>> = _notes
+
+
+
+    init {
+        viewModelScope.launch {
+            when(val result = repo.getNotes()){
+                is Resource.Success -> {
+                    _notes.value = result.data.results
+                }
+                is Resource.Failure -> {
+                    Log.d("EPPAAAA", "Failure")
+                }
+                is Resource.Loading -> {
+                    Log.d("EPPAAAA", "Loading")
+                }
+            }
         }
     }
 
-    fun createNote(note: Note) = liveData(Dispatchers.IO) {
-        emit(Resource.Loading())
-        try {
-            emit(Resource.Success(repo.createNote(note.toNoteEntity())))
-        } catch (e: Exception) {
-            emit(Resource.Failure(e))
+    fun onCreateNote(note: Note)  {
+        viewModelScope.launch {
+            Log.d("EPPAAAA", "Creando $note")
+            repo.addNote(note)
         }
+    }
+
+    fun onCreateBackup(){
     }
 }

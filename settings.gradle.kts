@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "WeNoteHub"
 include(":app")
+

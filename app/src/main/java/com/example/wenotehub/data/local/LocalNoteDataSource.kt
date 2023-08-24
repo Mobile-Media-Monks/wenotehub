@@ -7,6 +7,10 @@ import javax.inject.Inject
 
 
 class LocalNoteDataSource @Inject constructor(private val dao: NoteDao) {
-    suspend fun getAllNotes(): NoteList = dao.getAllNotes().toNoteList()
-    suspend fun saveNote(note: NoteEntity) = dao.saveNote(note)
+    suspend fun getNotes(): NoteList = dao.getNotes().toNoteList()
+    suspend fun addNote(note: NoteEntity) = dao.addNote(note)
+
+    suspend fun updateNote(note: NoteEntity) = dao.updateNote(note)
+
+    suspend fun deleteNote(note: NoteEntity) = dao.deleteNote(note)
 }

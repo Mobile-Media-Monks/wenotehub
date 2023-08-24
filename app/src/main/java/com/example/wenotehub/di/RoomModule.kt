@@ -2,6 +2,7 @@ package com.example.wenotehub.di
 
 import android.content.Context
 import androidx.room.Room
+import com.example.wenotehub.core.RoomBackupManajer
 import com.example.wenotehub.data.local.AppDatabase
 import dagger.Module
 import dagger.Provides
@@ -29,4 +30,10 @@ object RoomModule {
     @Singleton
     @Provides
     fun provideDao(db: AppDatabase) = db.noteDao()
+    @Singleton
+    @Provides
+    fun provideBackupManager(@ApplicationContext context: Context): RoomBackupManajer {
+        return RoomBackupManajer(context)
+    }
+
 }
