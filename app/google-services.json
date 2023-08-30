@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "325190454601",
+    "project_id": "wenotehub",
+    "storage_bucket": "wenotehub.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:325190454601:android:2ca0a0aec6bf1f6bccde98",
+        "android_client_info": {
+          "package_name": "com.example.wenotehub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "325190454601-1vf0blvdmlc1qgt7sbpeuup3pisr2gtu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.wenotehub",
+            "certificate_hash": "5d7f7b791c1668e686e2dc405feb706ea3934d70"
+          }
+        },
+        {
+          "client_id": "325190454601-nc1appgq1c2k7etel5uovdjjdu03ogn3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDshnsH9j-AFjnjCwY47jcf5m1U-7aoUgo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "325190454601-9th7ffhaa70lq0fgve4rg4ophib7pkbo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

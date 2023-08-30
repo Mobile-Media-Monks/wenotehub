@@ -9,7 +9,6 @@ import android.util.Log
 import android.widget.Toast
 import androidx.room.RoomDatabase
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.firebase.crashlytics.buildtools.reloc.org.apache.commons.io.comparator.LastModifiedFileComparator
 import de.raphaelebner.roomdatabasebackup.core.AESEncryptionHelper
 import de.raphaelebner.roomdatabasebackup.core.AESEncryptionManager
 import de.raphaelebner.roomdatabasebackup.core.OnCompleteListener
@@ -24,6 +23,7 @@ import java.util.Calendar
 import java.util.Locale
 import javax.crypto.BadPaddingException
 import com.google.common.io.Files.copy
+import com.google.firebase.crashlytics.buildtools.reloc.org.apache.commons.io.comparator.LastModifiedFileComparator
 import javax.inject.Inject
 
 

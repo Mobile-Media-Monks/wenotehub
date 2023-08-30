@@ -54,6 +54,9 @@ fun MainScreen() {
         "create_screen" -> {
             bottomBarState.value = false
         }
+        "signIn" -> {
+            bottomBarState.value = false
+        }
 
         else -> {
             bottomBarState.value = true
@@ -83,6 +86,10 @@ fun MainScreen() {
                     "create_screen" -> {
                         bottomBarState.value = false
                     }
+                    "signIn" -> {
+                        bottomBarState.value = false
+                    }
+
 
                     else -> {
                         bottomBarState.value = true

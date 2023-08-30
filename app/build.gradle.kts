@@ -3,9 +3,18 @@ plugins {
     id("org.jetbrains.kotlin.android")
     kotlin("kapt")
     id("com.google.dagger.hilt.android")
+    id("com.google.gms.google-services")
 }
 
 android {
+    signingConfigs {
+        getByName("debug") {
+            storeFile = file("/Users/estebanvg/Desktop/noteapp")
+            storePassword = "noteapp"
+            keyAlias = "noteapp"
+            keyPassword = "noteapp"
+        }
+    }
     namespace = "com.example.wenotehub"
     compileSdk = 33
 
@@ -49,6 +58,7 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    buildToolsVersion = "33.0.2"
 
     kapt {
         correctErrorTypes = true
@@ -60,18 +70,25 @@ android {
 dependencies {
 
     implementation("de.raphaelebner:roomdatabasebackup:1.0.0-beta13")
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.0-beta01")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
+
 
     /*Dagger */
     implementation("com.google.dagger:hilt-android:2.46.1")
-    implementation("com.google.firebase:firebase-crashlytics-buildtools:2.9.8")
     implementation("com.google.android.material:material:1.9.0")
+    implementation("com.google.firebase:firebase-auth-ktx:22.1.1")
+    implementation("com.google.android.gms:play-services-auth:20.6.0")
+    implementation("com.google.firebase:firebase-crashlytics-buildtools:2.9.9")
     kapt("com.google.dagger:hilt-android-compiler:2.44")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
     // LiveData && ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
-    implementation ("androidx.compose.runtime:runtime-livedata:1.5.0")
+    implementation("androidx.compose.runtime:runtime-livedata:1.5.0")
 
 
     // Play services coroutines
@@ -101,8 +118,7 @@ dependencies {
     api("com.google.guava:guava:32.1.2-android")
 
 
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
+    implementation("androidx.core:core-ktx:1.10.1")
     implementation("androidx.activity:activity-compose:1.7.2")
     implementation(platform("androidx.compose:compose-bom:2023.03.00"))
     implementation("androidx.compose.ui:ui")

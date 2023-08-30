@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.example.wenotehub.presentation.settings.SettingsViewModel
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 
 @Composable
 fun SettingsScreen(
@@ -20,7 +21,7 @@ fun SettingsScreen(
 
     Box(Modifier.fillMaxSize()) {
         Column {
-            Button(onClick = { viewModel.onCreateBackup() }) {
+            Button(onClick = {  }) {
                 Text(text = "Guardar")
             }
             Button(onClick = { viewModel.onRestoreBackup() }) {

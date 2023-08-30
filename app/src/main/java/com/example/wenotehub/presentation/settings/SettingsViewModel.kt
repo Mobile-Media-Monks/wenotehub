@@ -2,16 +2,24 @@ package com.example.wenotehub.presentation.settings
 
 import android.content.Context
 import android.content.Intent
+import android.content.IntentSender
 import android.os.Environment
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.wenotehub.MainActivity
+import com.example.wenotehub.R
 import com.example.wenotehub.core.RoomBackupManajer
 import com.example.wenotehub.data.local.AppDatabase
+import com.google.android.gms.auth.api.identity.BeginSignInRequest
+import com.google.android.gms.auth.api.identity.SignInClient
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import de.raphaelebner.roomdatabasebackup.core.RoomBackup
+import kotlinx.coroutines.tasks.await
 import java.io.File
+import java.util.concurrent.CancellationException
 import javax.inject.Inject
 
 @HiltViewModel
@@ -26,7 +34,9 @@ class SettingsViewModel @Inject constructor(
 
     private val backupDir = File(extStorageDirectory, "backup.sql3")
 
-    fun onCreateBackup(){
+
+
+    fun onCreateBackup() {
         backupDir.createNewFile()
         roomManager
             .database(appDatabase)
@@ -44,7 +54,7 @@ class SettingsViewModel @Inject constructor(
     }
 
 
-    fun onRestoreBackup(){
+    fun onRestoreBackup() {
         roomManager
             .database(appDatabase)
             .enableLogDebug(true)
@@ -60,4 +70,6 @@ class SettingsViewModel @Inject constructor(
             }
             .restore()
     }
+
+
 }

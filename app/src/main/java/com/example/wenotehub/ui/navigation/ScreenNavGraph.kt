@@ -39,5 +39,12 @@ sealed class ScreenNavGraph(
             title = "Create",
             icon = Icons.Default.Add
         )
+
+    object SignInScreen :
+        ScreenNavGraph(
+            route = "signIn",
+            title = "signIn",
+            icon = Icons.Default.Add
+        )
 }
 
