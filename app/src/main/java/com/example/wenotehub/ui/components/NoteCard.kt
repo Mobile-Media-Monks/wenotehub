@@ -2,6 +2,7 @@ package com.example.wenotehub.ui.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -17,6 +18,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
@@ -31,14 +33,17 @@ import java.util.Locale
 fun NoteCard(note: Note) {
     Card(
         modifier = Modifier
-            .clip(RoundedCornerShape(32.dp))
+            .clip(RoundedCornerShape(20.dp))
+            .border(width = 2.dp, color = Color.Black, shape = RoundedCornerShape(20.dp))
             .height(349.dp),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surface
+            containerColor = Color.Black
         ),
         elevation = CardDefaults.cardElevation(defaultElevation = 10.dp)
     ) {
-        Box {
+        Box(
+            modifier = Modifier.padding(bottom = 5.dp, end = 5.dp).clip(RoundedCornerShape(20.dp)).background(MaterialTheme.colorScheme.surface)
+        ) {
             Image(
                 imageVector = BackgroundImage(),
                 contentDescription = null,

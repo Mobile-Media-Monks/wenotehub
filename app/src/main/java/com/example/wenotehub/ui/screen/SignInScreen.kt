@@ -23,14 +23,17 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.*
+import androidx.navigation.NavHostController
 import com.example.wenotehub.R
 import com.example.wenotehub.presentation.auth.SignInState
+import com.example.wenotehub.ui.navigation.ScreenNavGraph
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SignScreen(
     state: SignInState,
-    onSingClick: () -> Unit
+    onSingClick: () -> Unit,
+    navController: NavHostController
 ) {
     var text by rememberSaveable { mutableStateOf("") }
     val context = LocalContext.current
@@ -85,7 +88,7 @@ fun SignScreen(
         )
         Spacer(modifier = Modifier.padding(vertical = 20.dp))
         Button(
-            onClick = { /*TODO*/ },
+            onClick = { navController.navigate(ScreenNavGraph.HomeScreen.route) },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(54.dp),
@@ -100,6 +103,7 @@ fun SignScreen(
         Spacer(modifier = Modifier.padding(vertical = 10.dp))
         LoginDivider()
         Spacer(modifier = Modifier.padding(vertical = 10.dp))
+
         Button(
             onClick = { /*TODO*/ },
             modifier = Modifier

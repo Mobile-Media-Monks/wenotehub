@@ -9,7 +9,7 @@ plugins {
 android {
     signingConfigs {
         getByName("debug") {
-            storeFile = file("/Users/estebanvg/Desktop/noteapp")
+            storeFile = file("/Users/estebanvg/AndroidStudioProjects/WeNoteHub/app/noteapp")
             storePassword = "noteapp"
             keyAlias = "noteapp"
             keyPassword = "noteapp"

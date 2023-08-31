@@ -4,7 +4,6 @@ import android.app.Activity.RESULT_OK
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -24,9 +23,6 @@ import com.example.wenotehub.ui.screen.HomeScreen
 import com.example.wenotehub.ui.screen.SettingsScreen
 import com.example.wenotehub.ui.screen.SignScreen
 import com.google.android.gms.auth.api.identity.Identity
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.common.api.ApiException
-import com.google.firebase.auth.GoogleAuthProvider
 import kotlinx.coroutines.launch
 
 
@@ -84,7 +80,7 @@ fun NavGraph(navController: NavHostController, onChangeState: () -> Unit) {
                     val signInIntentSender = googleAuth.signInTwo()
                     launcher.launch(signInIntentSender)
                 }
-            })
+            }, navController)
 
         }
         composable(route = ScreenNavGraph.HomeScreen.route) {
